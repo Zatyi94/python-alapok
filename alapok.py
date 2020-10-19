@@ -26,8 +26,7 @@ print(type(szoveg2))
 
 # ha valahol látunk egy sima zárójelet és előtte valami szöveget
 # pl.: sdfsdfsdf()
-# ez egy függvényhívást jelent, a függvény neve a
-# nyitó zárójel előtti rész
+# ez egy függvényhívást jelent, a függvény neve a nyitó zárójel előtti rész
 
 # ha beírok egy szöveget '' közé, majd utána ütök egy .-ot, feldob egy lenyíló menüt
 # nekem itt épp konfigurációs probléma miatt nem hozta be, ezért hf: utána nézni otthon
@@ -126,7 +125,7 @@ for nev in nevsor:
     print('a névsorban szerepel: {} '.format(nev))
 
 for index, nev in enumerate(nevsor):
-    print('{} : {} '.format(index, nev))
+    print('{} : {} '.format(index+1, nev))
 
 # nev lehetne n is, vagy az index i, csak akkor a zárójelen belül is úgy kell rájuk hivatkozni
 
@@ -183,3 +182,22 @@ def divisible_by_three_better(num):
 
 print(divisible_by_three_better('4'))
 print(divisible_by_three('gdgdb'))
+
+# ez 0-tól 4-ig megy
+# a range generál egy "tömböt", amin a for ciklus végig megy
+for i in range(5):
+    # az end paraméter a string végére beteszi, amit az aposztrofok közé írtunk
+    print(i, end=', ')
+
+print ('\n')
+# ez 5-től 9-ig megy
+# ha 2 paramétert adok meg a range után, akkor az első a kezdete, a második a vége lesz
+for i in range(5, 10):
+    print(i, end=', ')
+
+print ('\n')
+# ha 3 paramétert adok meg a range után, a harmadik az lesz, hanyasával
+# pl. 5-től 25-ig kettessével
+for i in range(5, 25, 2):
+    print(i, end=', ')
+

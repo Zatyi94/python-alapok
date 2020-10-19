@@ -131,3 +131,55 @@ for index, nev in enumerate(nevsor):
 # nev lehetne n is, vagy az index i, csak akkor a zárójelen belül is úgy kell rájuk hivatkozni
 
 print('a nevsor nulladik eleme: {} '.format(nevsor[0]))
+
+def divisible_by_three(num):
+    if  type(num) != int:
+        # ha itt printelek, az már nem single responsibility principle
+        # egy függvény egy dolgot csináljon!
+        # mellékhatás
+        # print('nem szamot kaptam')
+        # return = return None
+        return 'nem szamot kaptam'
+
+    if num % 3 == 0:
+        # ez az early return, megspóroltunk egy else ágat
+        return True
+    return False
+
+print(divisible_by_three(9))
+print(divisible_by_three(4))
+print(divisible_by_three('4'))
+
+# Hibakezelés:
+# print(divisible_by_three('4')) ebben a függvényben a 4 string, mert '' között van
+# kiakadna tőle a progi - emiatt szokták sokat tesztelni az a progikat is
+# az alkalmazás legyen felészülve minden hibalehetőségre
+# még így is lehet, hogy a user tudni fog vele vmi újat csinálni, talál egy hibát
+# a hibát visszajelentve tudjuk fejleszteni a programot
+
+# Hibák:
+# SyntaxError az egyik leggyakoribb: pl. nem raktam zárójelet, kettőspontot..
+# szemantikai hiba a másik gyakori. ami szintaktikailag helyes, de... pl:
+# if True:
+#    print(divisible_by_three(9))
+#    print(divisible_by_three(4))
+#    print(divisible_by_three('4'))
+# mindig lefut, if True:-nak nincs értelme
+# logikai hiba a kódban, ami lefut, nem hibás, de fölöslegesen bonyolultabb lesz
+# vagy komplexebb, nehezebben olvasható, lassabb lesz a kód
+# ezt sokkal nehezebb felismerni
+
+def divisible_by_three_better(num):
+    # a try - except blokk hibakezelésre használható
+    # ha a try blokkban lévő kód ValueErrort dob, akkor az
+    # except ValueErrorban lévő rész fog lefutni
+    try:
+        num = int(num)
+        if num % 3 == 0:
+            return True
+        return False
+    except ValueError:
+        return 'nem szamot kaptam'
+
+print(divisible_by_three_better('4'))
+print(divisible_by_three('gdgdb'))
